@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-       Schema::table('chirps', function (Blueprint $table) {
-        $table->string('message');
-    });
+        Schema::table('chirps', function (Blueprint $table) {
+            $table->foreignId('user_id')->nullable()->constrained()->cascadeOnDelete()->default(0);
+        });
     }
+    
+
 
     /**
      * Reverse the migrations.
